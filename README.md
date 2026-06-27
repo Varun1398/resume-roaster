@@ -1,16 +1,148 @@
-# React + Vite
+# 🔥 Roastly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Roastly is an AI-powered resume roaster that analyzes resumes and predicts how vulnerable a career might be to AI replacement.
 
-Currently, two official plugins are available:
+Upload your resume, let AI analyze your experience, skills, and career path, and receive a brutally honest roast along with an AI replacement score.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* 📄 PDF and DOCX resume upload
+* 🤖 AI-powered resume parsing
+* 🔥 Funny but critical career roasting
+* 📊 AI replacement score (0–10)
+* 📈 Recent roast history
+* 🌗 Dark and Light mode support
+* ⚡ Fast React + FastAPI architecture
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+### Frontend
+
+* React
+* Vite
+* Material UI
+* React Query
+* Axios
+
+### Backend
+
+* FastAPI
+* OpenAI API
+* Pydantic
+
+---
+
+## Project Structure
+
+```text
+roaster/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/
+│   ├── app/
+│   ├── uploads/
+│   ├── meta/
+│   ├── requirements.txt
+│   └── .env
+│
+└── README.md
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Runs on:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Backend Setup
+
+Create a virtual environment:
+
+```bash
+cd backend
+
+python -m venv .venv
+```
+
+Activate it:
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+```
+
+Run the server:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Runs on:
+
+```text
+http://localhost:8000
+```
+
+---
+
+## Environment Variables
+
+```env
+OPENAI_API_KEY=your_openai_key
+```
+
+---
+
+## Screenshots
+
+Add screenshots here after deployment.
+
+---
+
+## Future Improvements
+
+* Database integration
+* Roast history persistence
+* User authentication
+* Resume analytics dashboard
+* Shareable roast links
+* Leaderboard of most roasted careers
+
+---
+
+## Author
+
+Created by Varun Sharma
