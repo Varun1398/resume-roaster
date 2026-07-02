@@ -18,7 +18,7 @@ const SocialProof = () => {
   const showAvatars = () => {
     if (isLoading) return <Skeleton variant="rectangular" />;
     return (
-      <AvatarGroup max={3} spacing={"small"} >
+      <AvatarGroup max={3} spacing={"small"}>
         {Array.from({ length: avatarsToShow }).map((_, idx) => (
           <Avatar
             key={idx}
@@ -39,7 +39,7 @@ const SocialProof = () => {
       <Typography variant="body1" color={theme.palette.text.secondary}>
         {!data?.roastCount
           ? "Be the first brave soul 💀"
-          : `${data.roastCount}+ resumes roasted`}
+          : `${data.roastCount} ${data.roastCount > 3 ? " +resumes" : "resumes"} roasted`}
       </Typography>
     </Box>
   );

@@ -6,7 +6,9 @@ const useFetchRoastCount = () => {
     queryKey: ["stats"],
     queryFn: getCountAndRecentRoastApi,
     staleTime: 1000*60,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
+    retry: false,
+    refetchOnMount: "always"
   });
 };
 
