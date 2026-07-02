@@ -1,17 +1,17 @@
 import pdfplumber
 from docx import Document
-import os
+import io
 
 
-def extractText(filePath: str):
-    extenstion = os.path.splitext(filePath)[1].lower()
-    if extenstion == ".pdf":
-        return extractPDF(filePath)
+def extractText(fileBytes: bytes, fileName: str):
+    extenstion = fileName.split(".")[-1].lower()
+    if extenstion == "pdf":
+        return extractPDF(fileBytes)
 
-def extractPDF(filePath: str):
+def extractPDF(fileBytes: bytes):
     text = ""
 
-    with pdfplumber.open(filePath) as pdf:
+    with pdfplumber.open(io.BytesIO(fileBytes)) as pdf:
         for page in pdf.pages:
             pageText = page.extract_text()
             text += pageText + "\n"
