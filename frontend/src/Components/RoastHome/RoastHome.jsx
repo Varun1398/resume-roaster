@@ -11,9 +11,10 @@ const RoastHome = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
+        minHeight: "94vh",
       }}
     >
-      <Container maxWidth={"lg"}>
+      <Container maxWidth={"lg"} sx={{ flex: 1 }}>
         <Content />
         <Steps />
         <RecentlyJudgedSection />

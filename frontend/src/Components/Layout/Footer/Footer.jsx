@@ -12,7 +12,7 @@ const Footer = () => {
     >
       <Divider
         sx={{
-          borderColor: "#D4D4D4",
+          borderColor: "divider",
           mb: 2,
         }}
       />

@@ -49,7 +49,7 @@ const Upload = ({
         ContentProps={{
           sx: {
             background: "linear-gradient(135deg, #b3261e, #8b0000)",
-            color: theme.palette.background.paper,
+            color: theme.palette.text.primary,
             fontWeight: 500,
             borderRadius: 3,
             border: `1px solid ${theme.palette.roast.border}`,

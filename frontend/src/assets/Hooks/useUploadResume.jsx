@@ -15,12 +15,11 @@ const useUploadResume = () => {
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ["roastCount"],
+        queryKey: ["stats"],
       });
       navigate("/roast", { state: { roast: data.data.roast } });
     },
   });
-
   return {
     ...mutation,
     openSnackBar,

@@ -21,17 +21,17 @@ export const RecentlyJudgedSection = () => {
   };
   return (
     <Box sx={{ pt: 4 }}>
-      <Typography
+      {data?.recentRoast && <Typography
         variant="body2"
         color="text.secondary"
         sx={{ textAlign: "center", mb: 3, letterSpacing: 1 }}
       >
         Recently Judged
-      </Typography>
+      </Typography>}
       {isLoading ? (
         <Skeleton variant="rectangular" />
       ) : (
-        <Grid container spacing={3}>
+        <Grid container spacing={3} justifyContent={data?.recentRoast ? "center" : ""}>
           {data?.recentRoast.map((recent, index) => (
             <Grid size={{ xs: 12, md: 4 }} key={index}>
               <Box
@@ -46,6 +46,7 @@ export const RecentlyJudgedSection = () => {
                     borderColor: theme.palette.roast.border,
                     transform: "translateY(-4px)",
                   },
+                  justifyContent: "center"
                 }}
               >
                 <Box
