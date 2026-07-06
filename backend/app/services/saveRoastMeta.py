@@ -27,7 +27,7 @@ async def getRoastMeta():
         roastCount = db.query(Roast).count()
         recent = db.query(Roast).order_by(Roast.id.desc()).limit(6).all()
         recentRoast = [
-            {
+            {   "id": roast.id,
                 "jobTitle": roast.job_title,
                 "roastScore": f"{roast.roast_score:.1f}",
                 "careerStatus": roast.career_status,
