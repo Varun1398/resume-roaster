@@ -17,7 +17,7 @@ const useUploadResume = () => {
       queryClient.invalidateQueries({
         queryKey: ["stats"],
       });
-      navigate("/roast", { state: { roast: data.data.roast } });
+      navigate(`/roast/${data.id}`)
     },
   });
   return {

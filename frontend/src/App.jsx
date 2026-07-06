@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<RoastHome />} />
-            <Route path="/roast" element={<RoastResult />} />
+            <Route path="/roast/:roastId" element={<RoastResult />} />
           </Route>
         </Routes>
       </Suspense>

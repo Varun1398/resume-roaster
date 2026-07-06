@@ -15,3 +15,11 @@ export const getCountAndRecentRoastApi = async () => {
   });
   return response.data;
 };
+
+export const getRoastById = async (roastId) => {
+  const response = await apiClient.get(`/roast/${roastId}`, {
+    headers: { "Content-Type": "application/json" },
+  });
+
+  return response.data;
+};

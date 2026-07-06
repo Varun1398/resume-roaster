@@ -38,8 +38,7 @@ async def uploadResume(file: UploadFile = File(...)):
         if existing:
             return {
                 "id": existing.id,
-                "cached": True,
-                "data": {}
+                "cached": True
             }
 
         text = extractText(fileBytes=fileBytes, fileName=file.filename)

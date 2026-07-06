@@ -1,6 +1,5 @@
 from fastapi import APIRouter
-from app.routes import resumeRoutes
-from app.routes import fetchCountAndRecentRoast
+from app.routes import resumeRoutes, fetchCountAndRecentRoast, fetchById
 
 api_router = APIRouter()
 
@@ -8,3 +7,4 @@ api_router = APIRouter()
 
 api_router.include_router(fetchCountAndRecentRoast.router)
 api_router.include_router(resumeRoutes.router, prefix="/resume")
+api_router.include_router(fetchById.router)

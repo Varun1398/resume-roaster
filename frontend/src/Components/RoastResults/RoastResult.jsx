@@ -1,17 +1,21 @@
 import React from "react";
 import RoastHeader from "./RoastHeader/RoastHeader";
-import { Container } from "@mui/material";
+import { Container, Skeleton } from "@mui/material";
 import RoastScore from "./RoastScore/RoastScore";
 import RoastHighlight from "./RoastHighlight/RoastHighlight";
 import RoastCategories from "./RoastCategories/RoastCategories";
 import RoastShare from "./RoastShare/RoastShare";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
+import { useGetRoastById } from "../../assets/Hooks/useGetRoastById";
+
 const RoastResult = () => {
-  const { state } = useLocation();
-  if (!state?.roast) {
-  return <Navigate to="/" replace />;
-}
-  const roast = state?.roast;
+  const {roastId} = useParams()
+  const {data, isLoading} = useGetRoastById(roastId)
+
+  const roast = data?.data?.roast;
+  if(isLoading){
+    return <Skeleton variant="rectangular"/>
+  }
   return (
     <Container maxWidth="md" sx={{ py: 8 }}>
       <RoastHeader name={roast.name} jobTitle={roast.jobTitle} />
