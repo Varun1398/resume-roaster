@@ -18,7 +18,7 @@ const RoastHeader = ({name, jobTitle}) => {
             width: 40,
             height: 40,
             bgcolor: theme.palette.roast.avatar,
-            color: "#fff",
+            color: theme.palette.roast.buttonText,
             fontWeight: 700,
             borderRadius: 1,
           }}
