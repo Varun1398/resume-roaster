@@ -10,9 +10,11 @@ import {
 } from "@mui/material";
 import React from "react";
 import useFetchRoastCount from "../../../assets/Hooks/useFetchRoastCount";
+import { useNavigate } from "react-router-dom";
 
 export const RecentlyJudgedSection = () => {
   const theme = useTheme()
+  const navigate = useNavigate();
   const { isLoading, data } = useFetchRoastCount();
   const getScoreColor = (score) => {
     if (score >= 8) return "#ff4d4d"; // Red
@@ -32,8 +34,8 @@ export const RecentlyJudgedSection = () => {
         <Skeleton variant="rectangular" />
       ) : (
         <Grid container spacing={3} justifyContent={data?.recentRoast ? "center" : ""}>
-          {data?.recentRoast.map((recent, index) => (
-            <Grid size={{ xs: 12, md: 4 }} key={index}>
+          {data?.recentRoast.map((recent) => (
+            <Grid size={{ xs: 12, md: 4 }} key={recent.id} onClick={() => navigate(`/roast/${recent.id}`)}>
               <Box
                 sx={{
                   border: `1px solid ${theme.palette.roast.border}`,
@@ -46,7 +48,8 @@ export const RecentlyJudgedSection = () => {
                     borderColor: theme.palette.roast.border,
                     transform: "translateY(-4px)",
                   },
-                  justifyContent: "center"
+                  justifyContent: "center",
+                  cursor: "pointer"
                 }}
               >
                 <Box
