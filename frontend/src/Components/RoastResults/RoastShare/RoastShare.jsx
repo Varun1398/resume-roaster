@@ -5,6 +5,25 @@ import { useNavigate } from "react-router-dom";
 const RoastShare = () => {
   const theme = useTheme()
   const navigate = useNavigate();
+  const shareOnX = () => {
+    const text = "AI absolutely roasted my resume 🤖🔥 Can yours survive?";
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        text,
+      )}&url=${encodeURIComponent(window.location.href)}`,
+      "_blank",
+    );
+  };
+
+  const shareOnLinkedIn = () => {
+    window.open(
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+        window.location.href,
+      )}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
   return (
     <Box
       sx={{
@@ -54,10 +73,16 @@ const RoastShare = () => {
                 bgcolor: theme.palette.roast.buttonHover,
               },
             }}
+            onClick={shareOnX}
           >
             Share on X
           </Button>
-          <Button variant="outlined" size="large" color="inherit">
+          <Button
+            variant="outlined"
+            size="large"
+            color="inherit"
+            onClick={shareOnLinkedIn}
+          >
             Share on LinkedIn
           </Button>
         </Stack>
