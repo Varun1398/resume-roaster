@@ -1,9 +1,13 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
+import os
+from dotenv import load_dotenv
 
-DB_URL = "sqlite:///app/database/roastly.db"
+load_dotenv()
 
-dbEngine = create_engine(DB_URL, connect_args={"check_same_thread": False})
+POSTGRES_URL = os.getenv("POSTGRES_URL")
+
+dbEngine = create_engine(POSTGRES_URL)
 
 SessionLocal = sessionmaker(autoflush=False, autocommit=False, bind=dbEngine)
 
