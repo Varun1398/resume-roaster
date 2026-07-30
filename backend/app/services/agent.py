@@ -1,13 +1,6 @@
-from openai import OpenAI
 from pydantic import BaseModel
-from dotenv import load_dotenv
 import json
-import secrets
-
-load_dotenv()
-
-client = OpenAI()
-
+from app.aiClients.Client import generate_response
 
 class CategoryScore(BaseModel):
     skill: str
@@ -21,15 +14,15 @@ class RoastOutput(BaseModel):
     summary: str
     survivalTip: str
     categories: list[CategoryScore]
-    name: str
-    jobTitle: str
+    name: str | None
+    jobTitle: str | None
 
 
 def roaster(parsedText):
 
     resumeData = json.dumps(parsedText.model_dump(), indent=2)
 
-    SYSTEM_PROMPT = """
+    SYSTEM_PROMPT = f"""
     You are a brutally honest but funny resume critic.
 
 Your job is to evaluate how vulnerable this person's career is to AI replacement.
@@ -69,14 +62,23 @@ Important:
 - A long career does not automatically mean low risk.
 - A junior engineer does not automatically mean high risk.
 - Score based on evidence from the resume.
+
+
+Extract the requested information.
+
+Return ONLY valid JSON.
+
+Do not return markdown.
+Do not return explanations.
+Do not return text before or after the JSON.
+
+The JSON MUST follow this schema:
+
+{json.dumps(RoastOutput.model_json_schema(), indent=2)}
     """
 
-    response = client.responses.parse(
-        model="gpt-4o-mini",
-        input=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": resumeData},
-        ],
-        text_format=RoastOutput,
+    return generate_response(
+        system_prompt=SYSTEM_PROMPT,
+        user_prompt=resumeData,
+        output_format=RoastOutput,
     )
-    return response.output_parsed
