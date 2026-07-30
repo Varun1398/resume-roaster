@@ -23,7 +23,7 @@ export const RecentlyJudgedSection = () => {
   };
   return (
     <Box sx={{ pt: 4 }}>
-      {data?.recentRoast && <Typography
+      {data?.recentRoast.length > 0 && <Typography
         variant="body2"
         color="text.secondary"
         sx={{ textAlign: "center", mb: 3, letterSpacing: 1 }}
