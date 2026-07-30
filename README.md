@@ -1,55 +1,117 @@
 # 🔥 Roastly
 
-Roastly is an AI-powered resume roaster that analyzes resumes and predicts how vulnerable a career might be to AI replacement.
+> **Upload your resume. Let AI roast your career.**
 
-Upload your resume, let AI analyze your experience, skills, and career path, and receive a brutally honest roast along with an AI replacement score.
+Roastly is an AI-powered resume analyzer that predicts how vulnerable your career is to AI replacement. It parses your resume, evaluates your experience, skills, and projects, and delivers a brutally honest (but humorous) roast along with an AI Replacement Score.
 
----
-
-## Features
-
-* 📄 PDF and DOCX resume upload
-* 🤖 AI-powered resume parsing
-* 🔥 Funny but critical career roasting
-* 📊 AI replacement score (0–10)
-* 📈 Recent roast history
-* 🌗 Dark and Light mode support
-* ⚡ Fast React + FastAPI architecture
+🌐 **Live Demo:** https://resume-roaster-nu.vercel.app/
 
 ---
 
-## Tech Stack
+## ✨ Features
+
+- 📄 Upload PDF and DOCX resumes
+- 🤖 AI-powered resume parsing
+- 🔥 Funny yet insightful AI career roasting
+- 📊 AI Replacement Score (0–10)
+- 🎯 Skill-wise analysis and scoring
+- 💡 Personalized survival tips
+- ⚡ Multi-provider AI fallback (Groq → Gemini → OpenAI)
+- 📱 Responsive Material UI interface
+- 🌙 Dark & Light theme support
+- 📤 Share results on X and LinkedIn
+
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
 
-* React
-* Vite
-* Material UI
-* React Query
-* Axios
+- React
+- Vite
+- Material UI
+- React Query
+- Axios
 
 ### Backend
 
-* FastAPI
-* OpenAI API
-* Pydantic
+- FastAPI
+- SQLAlchemy
+- Alembic
+- PostgreSQL (Neon)
+- Pydantic
+
+### AI Providers
+
+- Groq
+- Google Gemini
+- OpenAI
+
+### Deployment
+
+- Frontend → Vercel
+- Backend → Render
+- Database → Neon PostgreSQL
 
 ---
 
-## Project Structure
+## 🧠 How It Works
 
 ```text
-roaster/
+Resume Upload
+      │
+      ▼
+Resume Parser
+      │
+      ▼
+Structured Resume
+      │
+      ▼
+Resume Roaster
+      │
+      ▼
+AI Roast + Score
+```
+
+### AI Provider Architecture
+
+Roastly automatically falls back to another provider if one becomes unavailable.
+
+```text
+generate_response()
+        │
+ ┌──────┼───────────┐
+ │      │           │
+Groq  Gemini    OpenAI
+```
+
+This makes the application more reliable by handling provider outages, rate limits, and temporary API failures gracefully.
+
+---
+
+## 📂 Project Structure
+
+```text
+resume-roaster/
 │
 ├── frontend/
-│   ├── src/
 │   ├── public/
-│   └── package.json
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.js
 │
 ├── backend/
 │   ├── app/
+│   │   ├── agents/
+│   │   ├── ai/
+│   │   ├── config/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   └── utils/
+│   │
+│   ├── alembic/
 │   ├── uploads/
-│   ├── meta/
 │   ├── requirements.txt
 │   └── .env
 │
@@ -58,15 +120,29 @@ roaster/
 
 ---
 
+# 🚀 Getting Started
+
+## Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/resume-roaster.git
+
+cd resume-roaster
+```
+
+---
+
 ## Frontend Setup
 
 ```bash
 cd frontend
+
 npm install
+
 npm run dev
 ```
 
-Runs on:
+Frontend runs at:
 
 ```text
 http://localhost:5173
@@ -76,7 +152,7 @@ http://localhost:5173
 
 ## Backend Setup
 
-Create a virtual environment:
+Create a virtual environment
 
 ```bash
 cd backend
@@ -84,7 +160,7 @@ cd backend
 python -m venv .venv
 ```
 
-Activate it:
+Activate it
 
 ### Windows
 
@@ -92,25 +168,53 @@ Activate it:
 .venv\Scripts\activate
 ```
 
-Install dependencies:
+### macOS/Linux
+
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Create a `.env` file:
+---
+
+## Configure Environment Variables
+
+Create a `.env` file inside the backend folder.
 
 ```env
-OPENAI_API_KEY=your_api_key_here
+DATABASE_URL=your_neon_postgres_connection_string
+
+OPENAI_API_KEY=your_openai_api_key
+
+GROQ_API_KEY=your_groq_api_key
+
+GEMINI_API_KEY=your_gemini_api_key
+
+AI_PROVIDER_ORDER=groq,gemini,openai
 ```
 
-Run the server:
+---
+
+## Run Database Migrations
+
+```bash
+alembic upgrade head
+```
+
+---
+
+## Start Backend
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Runs on:
+Backend runs at:
 
 ```text
 http://localhost:8000
@@ -118,31 +222,38 @@ http://localhost:8000
 
 ---
 
-## Environment Variables
+## 📸 Screenshots
 
-```env
-OPENAI_API_KEY=your_openai_key
-```
+> Add screenshots of:
 
----
+- Landing Page
+![Landing Page](./screenshots//landingPage.png)
 
-## Screenshots
+- Resume Upload
+![Resume Upload](./screenshots//resumeUpload.png.png)
 
-Add screenshots here after deployment.
-
----
-
-## Future Improvements
-
-* Database integration
-* Roast history persistence
-* User authentication
-* Resume analytics dashboard
-* Shareable roast links
-* Leaderboard of most roasted careers
+- AI Roast Result
+![AI Roast Result](./screenshots//roastResult1.png.png)
+![AI Roast Result](./screenshots//roastResult2.png.png)
 
 ---
 
-## Author
+## 👨‍💻 Author
 
-Created by Varun Sharma
+**Varun Sharma**
+
+Frontend Developer | React | FastAPI | AI Enthusiast
+
+GitHub: https://github.com/Varun1398
+
+LinkedIn: https://www.linkedin.com/in/varunsharma1398/
+
+---
+
+## ⭐ Show Your Support
+
+If you found this project interesting or useful, consider giving it a **⭐ Star** on GitHub.
+
+It helps others discover the project and motivates future improvements.
+
+---
