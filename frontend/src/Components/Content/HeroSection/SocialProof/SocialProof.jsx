@@ -34,7 +34,7 @@ const SocialProof = () => {
     );
   };
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
+    <Box display="flex" justifyContent="center" alignItems="center" gap={1.5}>
       <Box display="flex">{showAvatars()}</Box>
       <Typography variant="body1" color={theme.palette.text.secondary}>
         {!data?.roastCount
