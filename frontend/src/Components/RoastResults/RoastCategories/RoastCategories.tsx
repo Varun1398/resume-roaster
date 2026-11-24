@@ -6,8 +6,14 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
+import type { RoastCategory } from "../../../assets/Api/apiUtils";
 
-const RoastCategories = ({ category, lastCategory }) => {
+interface RoastCategoriesProps{
+  category: RoastCategory
+  lastCategory: boolean
+}
+
+const RoastCategories = ({ category, lastCategory }: RoastCategoriesProps) => {
   const { skill, score, skillRoast } = category;
   const theme = useTheme();
   return (

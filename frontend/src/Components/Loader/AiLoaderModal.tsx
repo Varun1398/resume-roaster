@@ -2,6 +2,10 @@ import { Box, CircularProgress, Dialog, Fade, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import useUploadResume from "../../assets/Hooks/useUploadResume";
 
+interface AiLoaderModalProps {
+  open: boolean
+}
+
 const loadingSteps = [
   "📄 Reading your resume...",
   "🧠 Analyzing questionable career choices...",
@@ -10,8 +14,8 @@ const loadingSteps = [
   "🔥 Preparing emotional damage...",
 ];
 
-export const AiLoaderModal = ({ open }) => {
-  const [step, setStep] = useState(0);
+export const AiLoaderModal = ({ open }: AiLoaderModalProps) => {
+  const [step, setStep] = useState<number>(0);
 
   useEffect(() => {
     if (!open) {

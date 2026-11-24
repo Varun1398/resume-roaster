@@ -9,12 +9,11 @@ import { Navigate, useParams } from "react-router-dom";
 import { useGetRoastById } from "../../assets/Hooks/useGetRoastById";
 
 const RoastResult = () => {
-  const {roastId} = useParams()
-  const {data, isLoading} = useGetRoastById(roastId)
-
+  const { roastId } = useParams();
+  const { data, isLoading } = useGetRoastById(roastId);
   const roast = data?.data?.roast;
-  if(isLoading){
-    return <Skeleton variant="rectangular"/>
+  if (isLoading || !roast) {
+    return <Skeleton variant="rectangular" />;
   }
   return (
     <Container maxWidth="md" sx={{ py: 8 }}>
@@ -25,7 +24,7 @@ const RoastResult = () => {
         <RoastCategories
           key={index}
           category={category}
-          lastCategory={index === roast?.categories.length - 1}
+          lastCategory={index === roast.categories.length - 1}
         />
       ))}
       <RoastShare />

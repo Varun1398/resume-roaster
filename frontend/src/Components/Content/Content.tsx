@@ -9,6 +9,7 @@ import useUploadResume from "../../assets/Hooks/useUploadResume";
 const Content = () => {
   const uploadMutation = useUploadResume();
 
+
   return (
     <Box
       sx={{
@@ -27,7 +28,7 @@ const Content = () => {
             showLoader={uploadMutation.isPending}
             showSnackBar={uploadMutation.openSnackBar}
             onClose={uploadMutation.closeSnackBar}
-            errorMsg={uploadMutation.error?.response?.data?.detail}
+            errorMsg={uploadMutation?.error?.response?.data?.detail}
             onUploadRequest={uploadMutation.mutate}
           />
 

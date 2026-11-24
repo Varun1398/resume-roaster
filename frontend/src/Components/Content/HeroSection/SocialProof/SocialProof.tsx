@@ -8,15 +8,18 @@ import {
 } from "@mui/material";
 import React from "react";
 import useFetchRoastCount from "../../../../assets/Hooks/useFetchRoastCount";
+import FallbackLoader from "../../../Loader/FallbackLoader";
 
 const SocialProof = () => {
   const { data, isLoading } = useFetchRoastCount();
+
+if (isLoading || !data) return <Skeleton variant="rectangular" />;
 
   const avatarsToShow = Math.min(data?.roastCount, 4);
   const theme = useTheme();
 
   const showAvatars = () => {
-    if (isLoading) return <Skeleton variant="rectangular" />;
+    
     return (
       <AvatarGroup max={3} spacing={"small"}>
         {Array.from({ length: avatarsToShow }).map((_, idx) => (

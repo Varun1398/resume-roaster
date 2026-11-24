@@ -22,7 +22,7 @@ const Steps = () => {
       <Container maxWidth="md">
         <Grid container spacing={1} justifyContent={"center"} sx={{paddingTop: {xs: 4, sm: 2}}}>
           {steps.map((card) => (
-            <Grid item xs={12} sm={4} key={card.id}>
+            <Grid size={{ xs: 12, sm: 6 }} key={card.id}>
               <Card
                 sx={{
                   width: "100%",
