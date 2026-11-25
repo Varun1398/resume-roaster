@@ -1,7 +1,12 @@
 import { Avatar, Box, Divider, Typography, useTheme } from "@mui/material";
 import React from "react";
 
-const RoastHeader = ({name, jobTitle}) => {
+interface RoastHeader{
+  name: string | null
+  jobTitle: string
+}
+
+const RoastHeader = ({name, jobTitle}: RoastHeader) => {
   const theme = useTheme()
   return (
     <Box sx={{ mb: 6 }}>
@@ -23,7 +28,7 @@ const RoastHeader = ({name, jobTitle}) => {
             borderRadius: 1,
           }}
         >
-          {name[0]}
+          {name!== null && name[0]}
         </Avatar>
         <Box>
           <Typography variant="h6" sx={{ fontWeight: 600, lineHeight: 1.2 }}>

@@ -10,6 +10,15 @@ import {
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { AiLoaderModal } from "../../../Loader/AiLoaderModal";
+import type { RoastResponse } from "../../../../assets/Api/apiUtils";
+
+interface UploadProps {
+  showLoader: boolean;
+  showSnackBar: boolean;
+  onClose: () => void;
+  errorMsg: string | undefined;
+  onUploadRequest: (formData: FormData) => void;
+}
 
 const Upload = ({
   showLoader,
@@ -17,15 +26,20 @@ const Upload = ({
   onClose,
   errorMsg,
   onUploadRequest,
-}) => {
+}: UploadProps) => {
   const theme = useTheme();
-  const onDrop = useCallback((selectedFiles) => {
-    const formData = new FormData();
+  const onDrop = useCallback(
+    (selectedFiles: File[]) => {
+      const file = selectedFiles[0];
+      if (!file) return;
+      const formData = new FormData();
 
-    formData.append("file", selectedFiles[0]);
+      formData.append("file", file);
 
-    onUploadRequest(formData);
-  }, []);
+      onUploadRequest(formData);
+    },
+    [onUploadRequest],
+  );
 
   const { getRootProps, getInputProps, open } = useDropzone({
     onDrop,

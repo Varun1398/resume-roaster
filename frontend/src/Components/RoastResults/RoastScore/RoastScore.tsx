@@ -1,7 +1,12 @@
 import { Box, Divider, Typography, useTheme } from "@mui/material";
 import React from "react";
 
-const RoastScore = ({score, careerStatus}) => {
+interface RoastScoreProps{
+  score: string
+  careerStatus: string
+}
+
+const RoastScore = ({score, careerStatus}: RoastScoreProps) => {
   const theme = useTheme()
   return (
     <Box sx={{ textAlign: "center", py: 2 }}>

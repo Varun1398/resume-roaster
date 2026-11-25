@@ -4,7 +4,11 @@ import { ThemeProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { darkTheme, lightTheme } from "../../Theme/Theme";
 
-const AppThemeProvider = ({children}) => {
+interface AppThemeProviderProps{
+  children: React.ReactNode
+}
+
+const AppThemeProvider = ({children}: AppThemeProviderProps) => {
   const [mode, setMode] = useState(localStorage.getItem("theme") || "dark");
 
   const toggleTheme = () => {
